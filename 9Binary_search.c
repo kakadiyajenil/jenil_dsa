@@ -1,37 +1,54 @@
 #include <stdio.h>
-#include<stdlib.h>
-#define n 10
-int j,i,k;
-void selection(int a[n])
+   
+int Binary_Search(int a[], int n, int element)
 {
-    for(int i=0;i<10;i++)
+    int l = 0;
+    int h = n - 1;
+    int mid;
+    while (l <= h)
     {
-        for(j=i+1;j<n;j++)
+        mid = l + (h - l) / 2;
+
+        if (a[mid] == element)
         {
-           if(a[i]>a[j])
-          {
-            k=a[i];
-            a[i]=a[j];
-            a[j]=k;
-          }
+            return mid;
+        }
+        else if (a[mid] < element)
+        {
+            l = mid + 1;
+        }
+        else
+        {
+            h = mid - 1;
         }
     }
+
+    return -1;
 }
+
 int main()
 {
-    int i,a[n];
-     for( i=0;i<=n;i++)
+    
+    int a[] = {10, 20, 30, 40, 50};
+    int n = sizeof(a) / sizeof(a[0]);
+    int v;
+    int l = 0;
+    int h = n - 1;
+    int mid;
+
+    printf("==> || Enter Searching Element || <== \n");
+    scanf("%d", &v);
+
+    int result = Binary_Search(a, n, v);
+
+    if (result == -1)
     {
-        a[i]=rand() % 100;
+        printf("==> || Element Is Not Found || <== \n");
     }
-    for( i=0;i<n;i++)
+    else
     {
-      printf("%d\t",a[i]);
+        printf("==> || Element Is Found at Index %d || <== \n", result);
     }
-    printf("\n");
-    selection(a);
-    for (i=0;i<n;i++)
-    {
-      printf("%d\t",a[i]);
-}
+
+return 0;
 }
