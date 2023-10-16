@@ -1,47 +1,37 @@
-// binary => sorted => acending/decending
 #include <stdio.h>
-int binarysearch(int a[], int x, int n)
+#include<stdlib.h>
+#define n 10
+int j,i,k;
+void selection(int a[n])
 {
-    int low = 0, high = n - 1, mid;
-    while (low <= high)
+    for(int i=0;i<10;i++)
     {
-        mid = (low + high) / 2;
-
-        if (a[mid] == x)
+        for(j=i+1;j<n;j++)
         {
-            return mid + 1;
-        }
-        else if (a[mid] < x)
-        {
-            low = mid + 1;
-        }
-        else
-        {
-            high = mid - 1;
+           if(a[i]>a[j])
+          {
+            k=a[i];
+            a[i]=a[j];
+            a[j]=k;
+          }
         }
     }
-    return -1;
 }
 int main()
 {
-    int a[] = {2, 4, 6, 8, 11, 15, 18, 21, 25, 28, 30, 33, 35, 38, 40}, x, b;
-    int n = sizeof(a) / sizeof(a[0]);
-    printf("array size = %d\n", n);
-
-    for (int i = 0; i < n; i++)
+    int i,a[n];
+     for( i=0;i<=n;i++)
     {
-        printf("%d ", a[i]);
+        a[i]=rand() % 100;
     }
-    printf("\nenter search element = ");
-    scanf("%d", &x);
-
-    b = binarysearch(a, x, n);
-    if (b < 0)
+    for( i=0;i<n;i++)
     {
-        printf("element is not found...");
+      printf("%d\t",a[i]);
     }
-    else
+    printf("\n");
+    selection(a);
+    for (i=0;i<n;i++)
     {
-        printf("search element found %d position ", b);
-  }
+      printf("%d\t",a[i]);
+}
 }
