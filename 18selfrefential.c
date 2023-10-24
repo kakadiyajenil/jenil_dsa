@@ -24,5 +24,5 @@ int main()
     a.ptr = &b;
     b.ptr = &a;
 
-    printf("\nA data: %d,char: %c",b.ptr->data, b.ptr->ch);
+    printf("\nA data: %d,char: %c",b.ptr->data, b.ptr->ch);
 }
